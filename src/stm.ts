@@ -13,9 +13,9 @@ export function createStateMachine(app: Ilu.App<typeof classes>): AnyStateMachin
     actions: {
       audioSetListener: () => audio.setListener({ object: objs3D.Camera }),
       audioOnOffFirst: () => {
-        audio.loadAndPlay({name: 'Guitar', url: '/scene/guitar.wav', object: 'Guitar', volume: 1.5, loop: true, fade: 1});
-        audio.loadAndPlay({name: 'Drums', url: '/scene/drums.wav', object: 'Drums', volume: 5, loop: true, fade: 1});
-        audio.loadAndPlay({name: 'Saxophone', url: '/scene/saxophone.wav', object: 'Saxophone', volume: 0.8, loop: true, fade: 1});
+        audio.loadAndPlay({name: 'Guitar', url: 'scene/guitar.wav', object: 'Guitar', volume: 1.5, loop: true, fade: 1});
+        audio.loadAndPlay({name: 'Drums', url: 'scene/drums.wav', object: 'Drums', volume: 5, loop: true, fade: 1});
+        audio.loadAndPlay({name: 'Saxophone', url: 'scene/saxophone.wav', object: 'Saxophone', volume: 0.8, loop: true, fade: 1});
       },
       enableOrbitCtrls: () => orbitCtrls.enable(),
     },
