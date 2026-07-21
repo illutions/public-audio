@@ -2,7 +2,7 @@ import { Cam3D } from 'illutions';
 
 export class Camera extends Cam3D {
   protected override onReady(): void {
-    // Align the camera with the target object.
+    // Aim the camera at the marker placed in the 3D scene
     const aim = this.scene.getObjectByName('Aim');
     if (!aim) return;
     aim.getWorldPosition(this.objTarget.position);
