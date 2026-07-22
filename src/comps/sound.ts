@@ -5,6 +5,7 @@ import html from './html/sound.html?raw';
 export class Sound extends Comp {
   // Track activation so audio can only be started once
   private isActivated: boolean = false;
+  private isVisible: boolean = false;
   private button: HTMLButtonElement | null = null;
 
   // Forward the required user gesture to the app state machine
@@ -24,6 +25,15 @@ export class Sound extends Comp {
     this.attachShadow({ mode: 'open' });
   }
 
+  // Reveal the activation button after the progress bar has finished hiding
+  public showButton(): void {
+    this.isVisible = true;
+
+    if (!this.isActivated && this.button) {
+      this.button.hidden = false;
+    }
+  }
+
   // Render the activation button when the component enters the page
   connectedCallback() {
     if (!this.shadowRoot) return;
@@ -36,9 +46,11 @@ export class Sound extends Comp {
 
     this.shadowRoot.prepend(style);
 
-    if (this.isActivated && this.button) {
-      this.button.hidden = true;
-    } else {
+    if (this.button) {
+      this.button.hidden = this.isActivated || !this.isVisible;
+    }
+
+    if (!this.isActivated) {
       this.button?.addEventListener('click', this.buttonClicked, { once: true });
     }
   }

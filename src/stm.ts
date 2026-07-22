@@ -1,15 +1,15 @@
 import { type AnyStateMachine, setup } from 'xstate';
-import type * as Ilu from "illutions";
+import type { App, ProgressBarHiddenEvent, SceneReadyEvent } from "illutions";
 
 import { classes } from './classes';
 
 // Define event-driven runtime behavior with a state machine
-export function createStateMachine(app: Ilu.App<typeof classes>): AnyStateMachine {
-  const { audio, objs3D, orbitCtrls } = app;
+export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
+  const { audio, comps, objs3D, orbitCtrls } = app;
 
   return setup({
     types: {} as {
-      events: Ilu.SceneReadyEvent | { type: 'BUTTON_CLICKED' };
+      events: ProgressBarHiddenEvent | SceneReadyEvent | { type: 'BUTTON_CLICKED' };
     },
     actions: {
       // Make the scene camera the listener for positional audio
@@ -22,6 +22,8 @@ export function createStateMachine(app: Ilu.App<typeof classes>): AnyStateMachin
       },
       // Enable camera interaction
       enableOrbitCtrls: () => orbitCtrls.enable(),
+      // Reveal the button after the progress bar is gone
+      showSoundButton: () => comps.Sound[0]?.showButton(),
     },
   }).createMachine({
     id: 'App',
@@ -34,6 +36,9 @@ export function createStateMachine(app: Ilu.App<typeof classes>): AnyStateMachin
       }
     },
     on: {
+      PROGRESSBAR_HIDDEN: {
+        actions: ['showSoundButton'],
+      },
       BUTTON_CLICKED: {
         actions: ['audioLoadAndPlay', 'enableOrbitCtrls'],
       },
