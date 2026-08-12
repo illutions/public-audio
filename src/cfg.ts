@@ -11,7 +11,7 @@ cfg.audio.rolloffFactor = 5;
 
 // Define how the camera orbits around the scene
 cfg.orbitCtrls.load = true;
-// cfg.orbitCtrls.autoRotate = true;
+cfg.orbitCtrls.autoRotate = true;
 cfg.orbitCtrls.autoRotateSpeed = 0.5;
 cfg.orbitCtrls.rotateSpeed = 0.5
 cfg.orbitCtrls.enableDamping = true
@@ -20,7 +20,7 @@ cfg.orbitCtrls.maxPolarAngle = 85;
 cfg.orbitCtrls.maxDistance = 25;
 
 // Load the Draco-compressed 3D scene
-cfg.model.file = 'scene/audio.glb';
+cfg.model.file = ['scene/audio-low.glb', 'scene/audio-med.glb', 'scene/audio-high.glb'];
 cfg.model.compress.mesh = 'draco'
 
 // Light the scene and background with an EXR environment
@@ -32,6 +32,6 @@ cfg.envCtrls.backgroundIntensity = 0.15;
 cfg.envCtrls.rotation.y = 172
 
 // Smooth jagged edges in the rendered image
-cfg.render.params.aa = true;
+cfg.render.params.antialias = true;
 
 export { cfg };

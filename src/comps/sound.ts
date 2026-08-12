@@ -15,7 +15,7 @@ export class Sound extends Comp {
     if (this.isActivated) return;
 
     this.isActivated = true;
-    this.events.send({ type: 'BUTTON_CLICKED' });
+    this.events.send({ type: 'Button_Clicked' });
     if (this.button) this.button.hidden = true;
   };
 

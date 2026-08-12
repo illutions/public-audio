@@ -13,16 +13,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "illutions": "^0.25.0",
+    "illutions": "^0.27.0",
     "three": "~0.185.1",
-    "xstate": "~5.31.1"
+    "xstate": "~5.32.5"
   },
   "devDependencies": {
     "@types/three": "~0.185.0",
     "@webgpu/types": "^0.1.70",
-    "javascript-obfuscator": "~5.4.1",
+    "javascript-obfuscator": "^5.5.0",
     "rollup-plugin-visualizer": "~7.0.0",
-    "terser": "~5.48.0",
+    "terser": "~5.49.0",
     "typescript": "~5.9.3",
     "vite": "~8.0.13",
     "vite-plugin-compression": "~0.5.1",

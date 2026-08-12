@@ -3,9 +3,10 @@
 The following third-party assets remain subject to their original licenses.
 Their sources and applicable license terms are documented below.
 
-The combined scene export in `public/scene/audio.glb` was created and assembled
-for this example. It incorporates the third-party 3D models listed below. The
-embedded assets retain their respective licenses.
+The progressive scene exports in `public/scene/audio-low.glb`,
+`public/scene/audio-med.glb`, and `public/scene/audio-high.glb` were created
+and assembled for this example. They incorporate the third-party 3D models
+listed below. The embedded assets retain their respective licenses.
 
 ## Drums 3D Model
 
@@ -14,7 +15,8 @@ embedded assets retain their respective licenses.
 - **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 - **License URL:** https://creativecommons.org/licenses/by/4.0/
 - **Source:** https://sketchfab.com/3d-models/drums-high-poly-73211a26e1d44168b61eb45812047041
-- **Bundled use:** Included in `public/scene/audio.glb`.
+- **Bundled use:** Included in the progressive `public/scene/audio-low.glb`,
+  `public/scene/audio-med.glb`, and `public/scene/audio-high.glb` variants.
 
 ## Drums Audio Recording
 
@@ -32,7 +34,8 @@ embedded assets retain their respective licenses.
 - **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 - **License URL:** https://creativecommons.org/licenses/by/4.0/
 - **Source:** https://sketchfab.com/3d-models/guitar-7ab6e59ba93b46bd8afa981fef92f114
-- **Bundled use:** Included in `public/scene/audio.glb`.
+- **Bundled use:** Included in the progressive `public/scene/audio-low.glb`,
+  `public/scene/audio-med.glb`, and `public/scene/audio-high.glb` variants.
 
 ## Guitar Audio Recording
 
@@ -50,7 +53,8 @@ embedded assets retain their respective licenses.
 - **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 - **License URL:** https://creativecommons.org/licenses/by/4.0/
 - **Source:** https://sketchfab.com/3d-models/saxophone-alto-08448f4bfbca474b80ba35a571648a27
-- **Bundled use:** Included in `public/scene/audio.glb`.
+- **Bundled use:** Included in the progressive `public/scene/audio-low.glb`,
+  `public/scene/audio-med.glb`, and `public/scene/audio-high.glb` variants.
 
 ## Saxophone Audio Recording
 

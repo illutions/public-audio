@@ -9,7 +9,7 @@ export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
 
   return setup({
     types: {} as {
-      events: ProgressBarHiddenEvent | SceneReadyEvent | { type: 'BUTTON_CLICKED' };
+      events: ProgressBarHiddenEvent | SceneReadyEvent | { type: 'Button_Clicked' };
     },
     actions: {
       // Make the scene camera the listener for positional audio
@@ -27,19 +27,19 @@ export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
     },
   }).createMachine({
     id: 'App',
-    initial: 'Start',
+    initial: 'START',
     states: {
-      Start: {
+      START: {
         on: {
-          SCENE_READY: { actions: ['audioSetListener'] },
+          Scene_Ready: { actions: ['audioSetListener'] },
         },
       }
     },
     on: {
-      PROGRESSBAR_HIDDEN: {
+      ProgressBar_Hidden: {
         actions: ['showSoundButton'],
       },
-      BUTTON_CLICKED: {
+      Button_Clicked: {
         actions: ['audioLoadAndPlay', 'enableOrbitCtrls'],
       },
     },
