@@ -3,12 +3,9 @@ import { Light3D } from 'illutions';
 
 export class Spot extends Light3D {
   // Called once when this object is encountered while traversing the GLTF model
-  public override onTraverse(gltfObj: SpotLight): void {
+  public override onTraverse(objGltf: SpotLight): void {
     // Enable a soft, low-resolution shadow for the GLTF spotlight
-    gltfObj.castShadow = true;
-    gltfObj.shadow.mapSize.set(64, 64);
-
-    // Set the underlying GLTF object
-    this.obj = gltfObj;
+    objGltf.castShadow = true;
+    objGltf.shadow.mapSize.set(64, 64);
   }
 }

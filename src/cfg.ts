@@ -1,37 +1,72 @@
-import { cfg } from 'illutions';
+import { setCfg, degToRad } from 'illutions';
 
-// Display runtime information and editable settings
-cfg.gui.infoBox.enable = true;
-cfg.gui.inspector.enable = true;
+export const cfg = setCfg({
+  // Display runtime information and editable settings
+  gui: {
+    infoBox: {
+      enable: true,
+    },
+    inspector: {
+      enable: true,
+    },
+  },
 
-// Configure how positional sounds fade with distance
-cfg.audio.enable = true;
-cfg.audio.refDistance = 2;
-cfg.audio.rolloffFactor = 5;
+  // Configure how positional sounds fade with distance
+  audio: {
+    enable: true,
+    refDistance: 2,
+    rolloffFactor: 5,
+  },
 
-// Define how the camera orbits around the scene
-cfg.orbitCtrls.load = true;
-cfg.orbitCtrls.autoRotate = true;
-cfg.orbitCtrls.autoRotateSpeed = 0.5;
-cfg.orbitCtrls.rotateSpeed = 0.5
-cfg.orbitCtrls.enableDamping = true
-cfg.orbitCtrls.dampingFactor = 0.025;
-cfg.orbitCtrls.maxPolarAngle = 85;
-cfg.orbitCtrls.maxDistance = 25;
+  // Load the Draco-compressed 3D scene
+  model: {
+    file: ['scene/audio-low.glb', 'scene/audio-med.glb', 'scene/audio-high.glb'],
+    compress: {
+      mesh: 'draco',
+    },
+  },
 
-// Load the Draco-compressed 3D scene
-cfg.model.file = ['scene/audio-low.glb', 'scene/audio-med.glb', 'scene/audio-high.glb'];
-cfg.model.compress.mesh = 'draco'
+  // Light the scene and background with an EXR environment
+  envCtrls: {
+    enable: true,
+    map: ['scene/qwantani_dusk_2_puresky_256.exr'],
+    dataType: 'float',
+    environmentIntensity: 0.25,
+    backgroundIntensity: 0.15,
+    rotation: {
+      y: degToRad(172),
+    },
+  },
 
-// Light the scene and background with an EXR environment
-cfg.envCtrls.enable = true;
-cfg.envCtrls.map = ['scene/hdri.exr'];
-cfg.envCtrls.dataType = 'float';
-cfg.envCtrls.environmentIntensity = 0.25
-cfg.envCtrls.backgroundIntensity = 0.15;
-cfg.envCtrls.rotation.y = 172
+  // Define how the camera orbits around the scene
+  orbitCtrls: {
+    load: true,
+    autoRotate: true,
+    autoRotateSpeed: 0.5,
+    rotateSpeed: 0.5,
+    enableDamping: true,
+    dampingFactor: 0.025,
+    maxPolarAngle: degToRad(85),
+    maxDistance: 25,
+  },
 
-// Smooth jagged edges in the rendered image
-cfg.render.params.antialias = true;
+  render: {
+    // Configure renderer profiles
+    profile: {
+      webgpu: {
+        msaa: 'render',
+        aa: 'traa',
+      },
+      webgl: {
+        msaa: 'post',
+        aa: 'smaa',
+      },
+    },
+    // Enable adaptive graphics
+    adaptiveGfx: true,
+  },
 
-export { cfg };
+  debug: {
+    log: 'all',
+  },
+});

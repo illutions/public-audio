@@ -1,8 +1,8 @@
-import { Comp } from 'illutions';
+import { Web } from 'illutions';
 import css from './style/sound.css?inline';
 import html from './html/sound.html?raw';
 
-export class Sound extends Comp {
+export class Sound extends Web {
   // Track activation so audio can only be started once
   private isActivated: boolean = false;
   private isVisible: boolean = false;

@@ -1,11 +1,13 @@
 import { type AnyStateMachine, setup } from 'xstate';
-import type { App, ProgressBarHiddenEvent, SceneReadyEvent } from "illutions";
 
-import { classes } from './classes';
+import type { ProgressBarHiddenEvent, SceneReadyEvent } from "illutions";
+
+import type { MyApp } from './index';
+
 
 // Define event-driven runtime behavior with a state machine
-export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
-  const { audio, comps, objs3D, orbitCtrls } = app;
+export const stm = (app: MyApp): AnyStateMachine => {
+  const { comps, audio, orbitCtrls } = app;
 
   return setup({
     types: {} as {
@@ -13,23 +15,23 @@ export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
     },
     actions: {
       // Make the scene camera the listener for positional audio
-      audioSetListener: () => audio.setListener({ object: objs3D.Camera }),
+      audioSetListener: () => audio.setListener({ obj: comps.scene.cam }),
       // Load and play each instrument as soon as the scene is ready
       audioLoadAndPlay: () => {
-        audio.loadAndPlay({name: 'Guitar', url: 'scene/guitar.wav', object: 'Guitar', volume: 1.5, loop: true, fade: 1});
-        audio.loadAndPlay({name: 'Drums', url: 'scene/drums.wav', object: 'Drums', volume: 5, loop: true, fade: 1});
-        audio.loadAndPlay({name: 'Saxophone', url: 'scene/saxophone.wav', object: 'Saxophone', volume: 0.8, loop: true, fade: 1});
+        comps.sound.guitar.loadAndStart();
+        comps.sound.drums.loadAndStart();
+        comps.sound.saxophone.loadAndStart();
       },
       // Enable camera interaction
       enableOrbitCtrls: () => orbitCtrls.enable(),
       // Reveal the button after the progress bar is gone
-      showSoundButton: () => comps.Sound[0]?.showButton(),
+      showSoundButton: () => comps.web.sound[0]?.showButton(),
     },
   }).createMachine({
     id: 'App',
-    initial: 'START',
+    initial: 'INIT',
     states: {
-      START: {
+      INIT: {
         on: {
           Scene_Ready: { actions: ['audioSetListener'] },
         },
@@ -44,4 +46,4 @@ export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
       },
     },
   });
-}
+};

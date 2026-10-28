@@ -72,4 +72,4 @@ listed below. The embedded assets retain their respective licenses.
 - **License:** Creative Commons CC0 1.0 Universal
 - **License URL:** https://creativecommons.org/publicdomain/zero/1.0/
 - **Source:** https://polyhaven.com/a/qwantani_dusk_2_puresky
-- **Bundled file:** `public/scene/hdri.exr`
+- **Bundled file:** `public/scene/qwantani_dusk_2_puresky_256.exr`
