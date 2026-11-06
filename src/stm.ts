@@ -1,9 +1,6 @@
 import { type AnyStateMachine, setup } from 'xstate';
-
 import type { ProgressBarHiddenEvent, SceneReadyEvent } from "illutions";
-
 import type { MyApp } from './index';
-
 
 // Define event-driven runtime behavior with a state machine
 export const stm = (app: MyApp): AnyStateMachine => {

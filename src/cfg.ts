@@ -66,6 +66,7 @@ export const cfg = setCfg({
     adaptiveGfx: true,
   },
 
+  // Log all messages to the console.
   debug: {
     log: 'all',
   },

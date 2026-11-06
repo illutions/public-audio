@@ -13,12 +13,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "illutions": "^0.36.0",
-    "three": "~0.186.0",
+    "illutions": "^0.38.0",
+    "three": "~0.187.0",
     "xstate": "~5.33.2"
   },
   "devDependencies": {
-    "@types/three": "~0.186.0",
+    "@types/three": "~0.187.0",
     "@webgpu/types": "^0.1.74",
     "javascript-obfuscator": "^5.5.0",
     "rollup-plugin-visualizer": "~7.1.1",
